@@ -1,0 +1,134 @@
+#!/usr/bin/env python
+#conda install -c conda-forge multiprocess
+
+import multiprocessing
+from multiprocessing import Pool
+import os
+import time
+import sys, getopt
+
+
+def func(i, command):
+    localtime = time.asctime( time.localtime(time.time()) )
+    pidHeader = " ".join([localtime, "|JOB ID:", str(i), "|PID:", str(os.getpid()), '\n'])
+    sys.stdout.write(pidHeader)
+    if command.find('>') < 0:
+        logFileName = 'jobID'+ str(i) +'.PID'+str(os.getpid())+'.log'
+        command = command.strip('\n')
+        command = command +' > '+ logFileName +' 2>&1'
+    os.system(command)
+#     print(command)
+
+if __name__ == "__main__":
+    # input setup
+    argvList = sys.argv[1:]
+    cpuNumber = 4
+    inputShellScriptList = 'inputShellScript.dat'
+
+    # print the header
+    print('''
+-----------------------------------------------------------------
+██████╗░██╗░░░██╗░██████╗██╗░░██╗██████╗░░█████╗░░█████╗░██╗░░░░░
+██╔══██╗╚██╗░██╔╝██╔════╝██║░░██║██╔══██╗██╔══██╗██╔══██╗██║░░░░░
+██████╔╝░╚████╔╝░╚█████╗░███████║██████╔╝██║░░██║██║░░██║██║░░░░░
+██╔═══╝░░░╚██╔╝░░░╚═══██╗██╔══██║██╔═══╝░██║░░██║██║░░██║██║░░░░░
+██║░░░░░░░░██║░░░██████╔╝██║░░██║██║░░░░░╚█████╔╝╚█████╔╝███████╗
+╚═╝░░░░░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░░╚════╝░░╚════╝░╚══════╝
+-----------------------------------------------------------------
+
+Welcome to the world of PYSHPOOL. To look for more information, please
+turn to github::pyshpool for more information.
+''')
+
+    print('='*30, '\n','poolRunShell v2.2')
+    print('='*30)
+    try:
+        opts, args = getopt.getopt(argvList,"hc:i:",["cpuNumber=","inputShellScriptList="])
+    except getopt.GetoptError:
+        print('Parameter ERROR!!!')
+        print('poolRunShell -c <int:cpuNumber>[4] -i <inputShellScriptList>[inputShellScript.dat]')
+        print(
+'''
+<int:cpuNumber> to use the max cpu: use '-c max' or
+'-c 0'
+<inputShellScriptList> Example:
+bash job1.sh > job1.log
+bash job2.sh > job2.log
+python job3.py > job3.log
+''')
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print('poolRunShell -c <int:cpuNumber>[4] -i <inputShellScriptList>[inputShellScript.dat]')
+            print(
+'''
+<int:cpuNumber> to use the max cpu: use '-c max' or
+'-c 0'
+<inputShellScriptList> Example:
+bash job1.sh > job1.log
+bash job2.sh > job2.log
+python job3.py > job3.log
+''')
+            sys.exit()
+        elif opt in ("-c", "--cpuNumber"):
+            cpuNumber = arg
+        elif opt in ("-i", "--inputShellScriptList"):
+            inputShellScriptList = arg
+
+    if cpuNumber=='max' or cpuNumber=='0':
+        cpuNumber = multiprocessing.cpu_count()
+
+    print('Input #cpu number is ',cpuNumber)
+    print('Input shell script list is ',inputShellScriptList)
+
+
+    #------------------------------------------------------
+    # STEP1: set the parameter
+    # set the number of cpu
+    setRunCpuNum = int(cpuNumber)#4
+    # set the input shell script
+    inputShellFileName = inputShellScriptList#'inputShellScript.dat'
+
+    #------------------------------------------------------
+    # STEP2: confirm the inputScript before running
+    # define the poo; by the #CPU
+    p = Pool(setRunCpuNum)
+
+    # Using readlines() to read inputShellScript
+    file1 = open(inputShellFileName, 'r')
+    Lines = file1.readlines()
+
+    count = 0
+    # Strips the newline character for inputShellScript
+    print('The input shell script dat is')
+    for line in Lines:
+        count += 1
+        print("Line{}: {}".format(count, line.strip()))
+
+
+    #------------------------------------------------------
+    # STEP3: running inputScript
+    # print header and begin to run the parallel
+    beginHeader = '\n' + "==="*15 + "\nThe max #CPU is " + str(multiprocessing.cpu_count()) + ", current #CPU is " + str(setRunCpuNum) + ".\n" + "==="*15 + '\n'*2
+    sys.stdout.write(beginHeader)
+
+    # begin running
+    localtime = time.asctime( time.localtime(time.time()) )
+    printHeader = "---"*15 + '\n' +localtime +"\nBegin running with "+str(len(Lines))+" jobs.\n" + "---"*15 + '\n'
+    sys.stdout.write(printHeader)
+
+    for i in range(len(Lines)):
+        # async, Submit tasks asynchronously
+        p.apply_async(func, args=(i,Lines[i],))
+
+    # Close the pool, not to recycle the processes in the pool, but to prevent the continued submission of tasks
+    p.close()
+    # Block until all tasks in the pool are executed
+    p.join()
+
+    #------------------------------------------------------
+    # STEP4: finish running inputScript
+    # finish running header
+    localtime = time.asctime( time.localtime(time.time()) )
+    printHeader = "---"*15 + '\n' +localtime +"\nFinish running with "+str(len(Lines))+" jobs.\n" + "---"*15 + '\n'
+    sys.stdout.write(printHeader)
