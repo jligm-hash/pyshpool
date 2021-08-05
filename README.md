@@ -14,6 +14,7 @@ To use the python, you need to make sure that `multiprocessing` is installed in 
 There is no prerequisite for shell version. U can enjoy pyshpool directly.
 
 # How to run pyshpool in 2 step?
+Without further description, you can enjoy multiprocess freely in HPC ([high performance computing](https://www.netapp.com/data-storage/high-performance-computing/what-is-hpc/)) by shell/python in two steps.
 1. `chmod 777 pyshpool`
 2. `./pyshpool -c CPUNUM -i inputList`
 
