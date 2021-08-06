@@ -4,7 +4,7 @@ The current release version is v2.2. Feel free to enjoy yourself.
 
 <!-- https://cdn.pixabay.com/photo/2016/03/09/15/28/water-1246669_1280.jpg -->
 <p align="center">
-  <img src="https://cdn.pixabay.com/photo/2016/03/09/15/28/water-1246669_1280.jpg" alt="Animation for MuSS" width="400" >
+  <img src="https://cdn.pixabay.com/photo/2016/03/09/15/28/water-1246669_1280.jpg" alt="Fish pool" width="400" >
 </p>
 
 ## python version V2.2
