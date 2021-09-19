@@ -8,10 +8,16 @@ The current release version is v2.2. Feel free to enjoy yourself.
 </p>
 
 ## python version V2.2
+
 To use the python, you need to make sure that `multiprocessing` is installed in your python environment. To install the `multiprocessing`, please turn to [this site](https://pypi.org/project/multiprocess/).
 
 ## shell version V2.2
+
 There is no prerequisite for shell version. U can enjoy pyshpool directly.
+
+## pyshpool static version
+
+You don't have to install any prerequisites for the pyshpool-static version and you just run the codes by one line command to enjoy yourself.
 
 # How to run pyshpool in 2 step?
 Without further description, you can enjoy multiprocess freely in HPC ([high performance computing](https://www.netapp.com/data-storage/high-performance-computing/what-is-hpc/)) by shell/python in two steps.
