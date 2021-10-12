@@ -8,12 +8,12 @@ The current release version is v2.2. Feel free to enjoy yourself.
 </p>
 
 # Table of Contents
-* [pypool](#python-version-V2-'.'-2)
-* [shpool](#shell-version-V2-'.'-2)
+* [pypool](#python-version-V2-2)
+* [shpool](#shell-version-V2-2)
 * [pyshpool-static](#pyshpool-static-version)
 * [pyshNodes-static](#pyshNode-static-version)
-* [Quick start](#How-to-run-pyshpool-in-2-step-'?')
-* [Tasklist/joblist](#What-is-input-job-list-'?')
+* [Quick start](#How-to-run-pyshpool-in-2-step)
+* [Tasklist/joblist](#What-is-input-job-list)
 * [Hand-on example](#Hand-on-example-on-running-pyshNode)
 
 
