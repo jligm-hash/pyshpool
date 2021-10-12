@@ -73,9 +73,9 @@ The input job list is your job command delimited by '\n'. For detailed informati
 
 3. Run one-command pyshNode and enjoy your self
 
-`./pyshOnNodes -p general -J demoPyshNodes -n 24 -i inpTaskList.dat # forHpc2`
+`./pyshOnNodes -p general -J demoPyshNodes -N 2 -n 24 -i inpTaskList.dat # forHpc2`
 
-`./pyshOnNodes -p cpu-share -J demoPyshNodes -n 24 -i inpTaskList.dat # forHpc3`
+`./pyshOnNodes -p cpu-share -J demoPyshNodes -N 2 -n 40 -i inpTaskList.dat # forHpc3`
 
 # How to develop the pyshpool?
 Just email in github@jligm-hash to give you access.
