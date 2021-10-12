@@ -54,22 +54,64 @@ use the absolute path in the list.
 
 # How to run pyshpool in 2 step?
 Without further description, you can enjoy multiprocess freely in HPC ([high performance computing](https://www.netapp.com/data-storage/high-performance-computing/what-is-hpc/)) by shell/python in two steps.
-1. `chmod 777 pyshpool`
-2. `./pyshpool -c CPUNUM -i inputList`
+- 1. make sure pyshpool is executive
+
+`chmod 777 pyshpool`
+
+- 2. run the one-line-command to enjoy yourself
+
+`./pyshpool -c CPUNUM -i inputList`
 
 # What is input job list?
-The input job list is your job command delimited by '\n'. For detailed information, please use help information or the document.
+The input job list is your job command delimited by '\n'. For detailed information, please use help information or the document. The input job list or the running task list may be like the followings:
 
-# Example on running pyshNode
+```
+# command + args (outputs/logs)
+bash demoScript.sh 1 > log1.log
+bash demoScript.sh 2 > log2.log
+bash demoScript.sh 3 > log3.log
+bash demoScript.sh 4 > log4.log
+bash demoScript.sh 5 > log5.log
+bash demoScript.sh 6 > log6.log
+bash demoScript.sh 7 > log7.log
+bash demoScript.sh 8 > log8.log
+bash demoScript.sh 9 > log9.log
+bash demoScript.sh 10 > log10.log
+```
+
+# Handon example on running pyshNode
 
 1. Clone this github
 
 `git clone https://github.com/jligm-hash/pyshpool.git`
 
-2. Check the demo script list
+2. Check the executive pyshpool and the demo script list
 
+`chmod 777 poolRunShell-static; chmod 777 pyshNodesV22-static`
 `cat demoScript.sh`
 `head inpTaskList.dat`
+
+You will get
+```
+#!/bin/bash
+RANDOM=$1
+seudoRunningTime=$((1 + $RANDOM % 10))
+echo "Running program $seudoRunningTime s"
+sleep $seudoRunningTime
+```
+and
+```
+bash demoScript.sh 1 > log1.log
+bash demoScript.sh 2 > log2.log
+bash demoScript.sh 3 > log3.log
+bash demoScript.sh 4 > log4.log
+bash demoScript.sh 5 > log5.log
+bash demoScript.sh 6 > log6.log
+bash demoScript.sh 7 > log7.log
+bash demoScript.sh 8 > log8.log
+bash demoScript.sh 9 > log9.log
+bash demoScript.sh 10 > log10.log
+```
 
 3. Run one-command pyshNode and enjoy your self
 
@@ -78,4 +120,5 @@ The input job list is your job command delimited by '\n'. For detailed informati
 `./pyshOnNodes -p cpu-share -J demoPyshNodes -N 2 -n 40 -i inpTaskList.dat # forHpc3`
 
 # How to develop the pyshpool?
+
 Just email in github@jligm-hash to give you access.
