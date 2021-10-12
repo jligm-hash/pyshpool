@@ -19,6 +19,39 @@ There is no prerequisite for shell version. U can enjoy pyshpool directly.
 
 You don't have to install any prerequisites for the pyshpool-static version and you just run the codes by one line command to enjoy yourself.
 
+## pyshNode static version
+
+You don't have to install any prerequisites for the pyshNode version and you just run the codes by one line command to enjoy yourself. Make sure pyshpool-static is in the same folder with pyshNode-static. The command is quite similar to slurm script.
+
+```
+onelineCommand:
+./pyshOnNodes -p <str:partitionName>[general]
+-J <str:>[multiNode]
+-N <int:nodeNumber>[2]
+-n <int:taskPerNode>[24]
+-e <str:email>[NULL]
+-i <inpTaskList>[inpTaskList.dat]
+
+details:
+
+./pyshOnNodes --partition[-p] <str:partitionName>[general]
+--job-name[-J] <str:>[multiNode]
+--nodes[-N] <int:nodeNumber>[2]
+--ntasks[-n] <int:taskPerNode>[24]
+--mail-user[-e] <str:email>[NULL]
+--inputTaskList[-i] <inpTaskList>[inpTaskList.dat]
+
+These varivables are the same with sbatch
+--partition[-p] <str:partitionName>[general]
+--job-name[-J] <str:>[multiNode]
+--nodes[-N] <int:nodeNumber>[2]
+--ntasks[-n] <int:taskPerNode>[24]
+--mail-user[-e] <str:email>[NULL]
+
+<inpTaskList> is a list of your tasks and please try to
+use the absolute path in the list.
+```
+
 # How to run pyshpool in 2 step?
 Without further description, you can enjoy multiprocess freely in HPC ([high performance computing](https://www.netapp.com/data-storage/high-performance-computing/what-is-hpc/)) by shell/python in two steps.
 1. `chmod 777 pyshpool`
@@ -26,6 +59,23 @@ Without further description, you can enjoy multiprocess freely in HPC ([high per
 
 # What is input job list?
 The input job list is your job command delimited by '\n'. For detailed information, please use help information or the document.
+
+# Example on running pyshNode
+
+1. Clone this github
+
+`git clone https://github.com/jligm-hash/pyshpool.git`
+
+2. Check the demo script list
+
+`cat demoScript.sh`
+`head inpTaskList.dat`
+
+3. Run one-command pyshNode and enjoy your self
+
+`./pyshOnNodes -p general -J demoPyshNodes -n 24 -i inpTaskList.dat # forHpc2`
+
+`./pyshOnNodes -p cpu-share -J demoPyshNodes -n 24 -i inpTaskList.dat # forHpc3`
 
 # How to develop the pyshpool?
 Just email in github@jligm-hash to give you access.
