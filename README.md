@@ -31,24 +31,28 @@ You don't have to install any prerequisites for the pyshpool-static version and 
 
 ## pyshNode static version
 
-You don't have to install any prerequisites for the pyshNode version and you just run the codes by one line command to enjoy yourself. Make sure pyshpool-static is in the same folder with pyshNode-static. The command is quite similar to slurm script.
+You don't have to install any prerequisites for the pyshNode version and you just run the codes by one line command to enjoy yourself. ***Make sure pyshpool-static is in the same folder with pyshNode-static***. The command is quite similar to slurm script.
 
 ```
 onelineCommand:
-./pyshOnNodes -p <str:partitionName>[general]
+./pyshOnNodes
+-p <str:partitionName>[general]
 -J <str:>[multiNode]
 -N <int:nodeNumber>[2]
 -n <int:taskPerNode>[24]
 -e <str:email>[NULL]
+-w <str:nodelist>[NULL]
 -i <inpTaskList>[inpTaskList.dat]
 
 details:
 
-./pyshOnNodes --partition[-p] <str:partitionName>[general]
+./pyshOnNodes
+--partition[-p] <str:partitionName>[general]
 --job-name[-J] <str:>[multiNode]
 --nodes[-N] <int:nodeNumber>[2]
 --ntasks[-n] <int:taskPerNode>[24]
 --mail-user[-e] <str:email>[NULL]
+--nodelist[-w] <str:nodelist>[NULL]
 --inputTaskList[-i] <inpTaskList>[inpTaskList.dat]
 
 These varivables are the same with sbatch
@@ -56,6 +60,7 @@ These varivables are the same with sbatch
 --job-name[-J] <str:>[multiNode]
 --nodes[-N] <int:nodeNumber>[2]
 --ntasks[-n] <int:taskPerNode>[24]
+--nodelist[-w] <str:nodelist>[NULL]
 --mail-user[-e] <str:email>[NULL]
 
 <inpTaskList> is a list of your tasks and please try to
