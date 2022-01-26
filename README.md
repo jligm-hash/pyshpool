@@ -14,14 +14,14 @@ The current release version for pyshpool is v2.2 and v2.5.1 for pyshNode-static.
 
 # Table of Contents
 
-* [Released version](#-Released-version)
+* [Released version](#Released-version)
 
 > * [pypool V2.2](#python-version-V22)
 > * [shpool V2.2](#shell-version-V22)
 > * [pyshpool-static](#pyshpool-static-version)
 > * [pyshNodes-static](#pyshNode-static-version)
 
-* [Quick start](#How-to-run-pyshpool-in-2-step)
+* [Quick start](#How-to-run-pyshpool-in-two-steps)
 * [Tasklist/joblist](#What-is-input-job-list)
 * [*Hand-on example*](#Hand-on-example-on-running-pyshNode)
 
