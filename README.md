@@ -20,6 +20,7 @@ The current release version for pyshpool is v2.2 and v2.5.1 for pyshNode-static.
 > * [shpool V2.2](#shell-version-V22)
 > * [pyshpool-static](#pyshpool-static-version)
 > * [pyshNodes-static](#pyshNode-static-version)
+> * [pyshSplit](#pyshSplit)
 
 * [Quick start](#How-to-run-pyshpool-in-two-steps)
 * [Tasklist/joblist](#What-is-input-job-list)
@@ -57,6 +58,10 @@ There is no prerequisite for shell version. U can enjoy pyshpool directly.
 - pyshpool static version
 
 You don't have to install any prerequisites for the pyshpool-static version and you just run the codes by one line command to enjoy yourself.
+
+- pyshSplit (***Updated: 2023-10-04***)
+
+Since for some clusters, the multinodes is not efficient enough (for queueing) and the pyshSplit is revised for the multiple jobs based on the single node. The input task list will be splited into the defined number of the jobs, and each job will be a single-node batch for the computation purpose.
 
 - pyshNode static version (***Updated: VersionV2.5.1 2022-01-24***)
 
