@@ -21,6 +21,7 @@ The current release version for pyshpool is v2.2 and v2.5.1 for pyshNode-static.
 > * [pyshpool-static](#pyshpool-static-version)
 > * [pyshNodes-static](#pyshNode-static-version)
 > * [pyshSplit](#pyshSplit)
+> * [pyshNode4](#pyshNode4)
 
 * [Quick start](#How-to-run-pyshpool-in-two-steps)
 * [Tasklist/joblist](#What-is-input-job-list)
@@ -67,6 +68,11 @@ Since for some clusters, the multinodes is not efficient enough (for queueing) a
 
 You don't have to install any prerequisites for the pyshNode version and you just run the codes by one line command to enjoy yourself. ***Make sure pyshpool-static is in the same folder with pyshNode-static***. The command is quite similar to slurm script.
 
+- pyshNode4 (***Updated: VersionV2.6.1 2024-10-29***)
+
+Since the V4.0 of HPC is much more powerful, the default parameters have been updated and the accountName is updated for multi-node version. ***Make sure pyshpool-static is in the same folder with pyshNode-static with chmod of 777!***
+
+
 ```
 onelineCommand:
 ./pyshOnNodes
@@ -77,6 +83,7 @@ onelineCommand:
 -e <str:email>[NULL]
 -w <str:nodelist>[NULL]
 -i <inpTaskList>[inpTaskList.dat]
+-A <str:>[accountName]
 
 details:
 
@@ -88,6 +95,7 @@ details:
 --mail-user[-e] <str:email>[NULL]
 --nodelist[-w] <str:nodelist>[NULL]
 --inputTaskList[-i] <inpTaskList>[inpTaskList.dat]
+--account[-A] <str:>[accountName]
 
 These varivables are the same with sbatch
 --partition[-p] <str:partitionName>[general]
