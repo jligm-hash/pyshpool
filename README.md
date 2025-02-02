@@ -72,6 +72,10 @@ You don't have to install any prerequisites for the pyshNode version and you jus
 
 Since the V4.0 of HPC is much more powerful, the default parameters have been updated and the accountName is updated for multi-node version. ***Make sure pyshpool-static is in the same folder with pyshNode-static with chmod of 777!***
 
+- pyshNode4-multipleThread (***Updated: VersionV2.7.1 2025-02-02***)
+
+Since the V4.0 of HPC is much more powerful, the default parameters have been updated and the accountName is updated for multi-node version. Since some tasks are efficient in multiple threads instead of multiple processes, the multipleThread version is updated ***Make sure pyshpool-static is in the same folder with pyshNode-static with chmod of 777!***
+
 
 ```
 onelineCommand:
