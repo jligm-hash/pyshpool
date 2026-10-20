@@ -1,0 +1,6 @@
+/dist/
+/.pysh/
+/.pysh-agent/
+/demo-out/
+/site/
+/.venv-docs/

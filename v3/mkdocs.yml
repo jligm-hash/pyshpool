@@ -1,0 +1,67 @@
+site_name: pysh
+site_description: Fast parallel shell jobs and parallel agentic work, in two self-contained binaries.
+site_url: https://jligm-hash.github.io/pyshpool/
+repo_url: https://github.com/jligm-hash/pyshpool
+repo_name: jligm-hash/pyshpool
+edit_uri: edit/main/v3/docs/
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - content.code.copy
+    - search.highlight
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Fast runner:
+      - pysh: pysh.md
+      - Slurm arrays: slurm.md
+  - Agent runner:
+      - pysh-agent: agent.md
+      - Providers: providers.md
+      - Command workers: command-workers.md
+  - Benchmarks: benchmarks.md
+  - Migration from v2: migration.md
+  - Design notes: design.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+
+copyright: Apache-2.0 · pysh v3

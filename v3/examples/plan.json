@@ -1,0 +1,31 @@
+{
+  "goal": "Produce a short, well-structured explanation of parallel task execution.",
+  "tasks": [
+    {
+      "id": "analyze-a",
+      "title": "Analyze the benefits",
+      "prompt": "List the main benefits of running independent shell tasks in parallel. Keep it to five bullets.",
+      "acceptance": "Five concrete, non-overlapping benefits."
+    },
+    {
+      "id": "analyze-b",
+      "title": "Analyze the risks",
+      "prompt": "List the main risks and failure modes of running independent shell tasks in parallel. Keep it to five bullets.",
+      "acceptance": "Five concrete risks, including resource contention and hidden failures."
+    },
+    {
+      "id": "draft",
+      "title": "Draft the explanation",
+      "prompt": "Combine the benefits and risks into a short explanation suitable for a README. Use the dependency outputs.",
+      "depends_on": ["analyze-a", "analyze-b"],
+      "acceptance": "A concise draft that mentions both benefits and risks."
+    },
+    {
+      "id": "review",
+      "title": "Review the draft",
+      "prompt": "Review the draft for clarity, unsupported claims, and missing caveats. Return the improved final version.",
+      "depends_on": ["draft"],
+      "acceptance": "A final version with no unsupported performance claims."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+name: v3 CI
+
+on:
+  push:
+    paths:
+      - "v3/**"
+      - ".github/workflows/v3-ci.yml"
+  pull_request:
+    paths:
+      - "v3/**"
+      - ".github/workflows/v3-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    defaults:
+      run:
+        working-directory: v3
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+          cache-dependency-path: v3/go.mod
+
+      - name: Check formatting
+        run: test -z "$(gofmt -l .)"
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Test
+        run: go test -race ./...
+
+      - name: Build
+        run: ./scripts/build.sh
+
+      - name: Smoke test pysh
+        run: |
+          mkdir -p "$RUNNER_TEMP/pysh-smoke"
+          ./dist/pysh run -i examples/tasks.dat -c 2 \
+            --workdir "$RUNNER_TEMP/pysh-smoke" \
+            --cwd "$RUNNER_TEMP/pysh-smoke" --quiet
+
+      - name: Smoke test pysh-agent
+        run: |
+          ./dist/pysh-agent run -g "CI smoke test" \
+            --workdir "$RUNNER_TEMP/pysh-agent-smoke" \
+            --no-synthesize --quiet

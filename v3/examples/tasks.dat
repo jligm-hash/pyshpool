@@ -1,0 +1,4 @@
+mkdir -p demo-out && echo "hello from task 1" > demo-out/task-1.txt
+mkdir -p demo-out && echo "hello from task 2" > demo-out/task-2.txt
+mkdir -p demo-out && printf 'hello from task 3\n' > demo-out/task-3.txt
+mkdir -p demo-out && echo "hello from task 4" > demo-out/task-4.txt
