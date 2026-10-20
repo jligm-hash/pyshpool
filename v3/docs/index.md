@@ -79,6 +79,56 @@ run  20261020-064837-a3ad97
 final /.../.pysh-agent/runs/20261020-064837-a3ad97/final.md
 ```
 
+## AI-assisted parallel work
+
+`pysh-agent` turns a broad goal into a small, inspectable task graph.
+Independent tasks run in parallel, dependent tasks wait for their inputs, and
+the final result is synthesized from the completed work.
+
+The default `mock` provider makes this demonstration runnable without an API
+key:
+
+```bash
+cd v3
+make build
+
+./dist/pysh-agent run \
+  -g "Explain how static binaries help scientific computing users" \
+  --provider mock \
+  --workdir .pysh-agent-demo
+```
+
+The demonstration creates four tasks:
+
+```text
+analyze-a ─┐
+           ├─> draft ─> review
+analyze-b ─┘
+```
+
+The two analysis tasks can run at the same time. The `draft` task receives
+their outputs, and `review` receives the draft. A run stores its plan,
+prompts, outputs, metadata, events, and final result under
+`.pysh-agent-demo/runs/<run-id>/`.
+
+For real model-assisted work, select a provider and provide its key through
+an environment variable:
+
+```bash
+export OPENAI_API_KEY="..."
+
+./dist/pysh-agent run \
+  -g "Compare three approaches to reproducible HPC workflows" \
+  --provider openai \
+  --model gpt-4o-mini \
+  --parallel 4
+```
+
+The v3 implementation itself was developed with AI assistance together with
+human design, review, testing, and verification. The result is intentionally
+open and inspectable: the Go source, task plans, worker outputs, logs, and
+run summaries are all available for review.
+
 ## Design in one paragraph
 
 `pysh` treats each non-comment line as a complete `bash -c` command. A single

@@ -12,6 +12,42 @@ The current release version for pyshpool is v2.2 and v2.5.1 for pyshNode-static.
     width="400" >
 </p>
 
+## v3: pyshpool parallel and agentic runners
+
+The repository now includes an additive `v3/` implementation. All original
+v2 scripts and binaries remain in their original locations and are unchanged.
+
+v3 provides two self-contained Go binaries:
+
+- **`pysh`** — runs a flat list of complete shell commands with bounded
+  concurrency, per-task logs, retries, timeouts, fail-fast behavior, JSON
+  summaries, and native Slurm array generation.
+- **`pysh-agent`** — turns a goal into a validated JSON task graph, runs
+  independent agentic tasks in parallel, passes dependency outputs forward,
+  and writes an inspectable synthesized result. It includes a deterministic
+  mock provider for demonstrations and supports OpenAI-compatible and
+  Anthropic providers.
+
+The v3 implementation was developed with AI assistance together with human
+design, review, testing, and verification. The Go source and run artifacts
+remain available for inspection, and the binaries can be built without a
+runtime Python, conda, or cluster-module dependency.
+
+Start here:
+
+- [v3 README](v3/README.md)
+- [v3 documentation and AI-assisted demonstration](https://jligm-hash.github.io/pyshpool/)
+- [v3 quickstart](v3/docs/quickstart.md)
+
+```bash
+cd v3
+make build
+./dist/pysh run -i examples/tasks.dat -c 4
+./dist/pysh-agent run \
+  -g "Explain how static binaries help scientific computing users" \
+  --provider mock
+```
+
 # Table of Contents
 
 * [Released version](#Released-version)

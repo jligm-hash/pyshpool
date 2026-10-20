@@ -32,6 +32,26 @@ The agent demo uses the deterministic `mock` provider, so it needs no API key.
 Inspect `.pysh/runs/` and `.pysh-agent/runs/` for logs, summaries, and the
 final agent result.
 
+## AI-assisted demonstration
+
+`pysh-agent` demonstrates AI-assisted parallel work by turning a goal into a
+validated task graph, running independent tasks concurrently, passing outputs
+to dependent tasks, and synthesizing the final result.
+
+The default mock provider is deterministic and requires no API key:
+
+```bash
+./dist/pysh-agent run \
+  -g "Explain how static binaries help scientific computing users" \
+  --provider mock \
+  --workdir .pysh-agent-demo
+```
+
+The v3 implementation was developed with AI assistance, alongside human
+architecture decisions, code review, testing, and verification. The source
+and generated run artifacts are kept inspectable rather than hidden behind an
+opaque binary or service.
+
 ## Documentation
 
 The full docs are in [`docs/`](docs/index.md) and are published with GitHub
