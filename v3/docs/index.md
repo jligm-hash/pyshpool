@@ -1,8 +1,8 @@
-# pysh
+# pyshpool
 
 **Run independent work in parallel — and see exactly what happened.**
 
-`pysh` is a small, dependency-free toolkit with two separate binaries:
+`pyshpool` is a small, dependency-free toolkit with two separate binaries:
 
 <div class="grid cards" markdown>
 

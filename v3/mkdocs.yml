@@ -1,4 +1,4 @@
-site_name: pysh
+site_name: pyshpool
 site_description: Fast parallel shell jobs and parallel agentic work, in two self-contained binaries.
 site_url: https://jligm-hash.github.io/pyshpool/
 repo_url: https://github.com/jligm-hash/pyshpool
@@ -19,15 +19,13 @@ theme:
     - search.highlight
     - search.suggest
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
+    - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       primary: indigo
       accent: indigo
       toggle:
@@ -64,4 +62,4 @@ markdown_extensions:
 plugins:
   - search
 
-copyright: Apache-2.0 · pysh v3
+copyright: Apache-2.0 · pyshpool

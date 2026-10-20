@@ -1,4 +1,4 @@
-# pysh v3
+# pyshpool v3
 
 Two self-contained Go binaries for parallel work:
 
